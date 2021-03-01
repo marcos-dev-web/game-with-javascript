@@ -56,12 +56,13 @@
 }
 
 .game_cube:hover {
-  transform: scale(1.2);
   border: 1px solid white;
   color: springgreen;
+  z-index: 3;
 }
 
 .value_cube {
   font-size: 2rem;
   color: inherit;
+  pointer-events: none;
 }

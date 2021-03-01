@@ -44,6 +44,12 @@
   border: 4px solid var(--purple2);
 }
 
+@keyframes rotate {
+  to {
+    transform: rotateZ(180deg);
+  }
+}
+
 .game_cube {
   display: flex;
   align-items: center;
@@ -52,13 +58,16 @@
   cursor: pointer;
   transition: all 150ms linear;
   color: white;
-  transform: rotateZ(-10deg);
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-delay: 100ms;
 }
 
 .game_cube:hover {
   border: 1px solid white;
   color: springgreen;
   z-index: 3;
+  transform: scale(1.2) !important;
 }
 
 .value_cube {

@@ -1,0 +1,67 @@
+.header {
+  width: 100%;
+  height: 4rem;
+  background: var(--purple2);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  justify-content: center;
+  z-index: 5;
+  position: fixed;
+}
+
+.logo {
+  color: var(--white);
+  width: 100%;
+  max-width: 1280px;
+  text-align: left;
+  font-size: 2rem;
+}
+
+.game {
+  width: 100%;
+  min-height: calc(420px + 4rem);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.game_board {
+  position: relative;
+  top: 4rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  z-index: 2;
+  background: #18dcff;
+  width: min(400px, 80vw);
+  height: min(400px, 80vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  padding: 5px;
+  border: 4px solid var(--purple2);
+}
+
+.game_cube {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--grey-dark);
+  cursor: pointer;
+  transition: all 150ms linear;
+  color: white;
+  transform: rotateZ(-10deg);
+}
+
+.game_cube:hover {
+  transform: scale(1.2);
+  border: 1px solid white;
+  color: springgreen;
+}
+
+.value_cube {
+  font-size: 2rem;
+  color: inherit;
+}

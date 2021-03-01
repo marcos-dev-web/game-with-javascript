@@ -21,16 +21,16 @@ class Cube {
   render(time = 1) {
     setTimeout(() => {
       this.element.onmouseenter = (e) => {
-        e.target.style.transform += 'scale(1.2)'
-      }
+        e.target.style.transform += "scale(1.2)";
+      };
       this.element.onmouseout = (e) => {
-        e.target.style.transform = 'rotateZ(0)'
-      }
+        e.target.style.transform = "rotateZ(0)";
+      };
       this.gameBoard.appendChild(this.element);
     }, 100 * time);
     setTimeout(() => {
       this.element.style.transform = "rotateZ(0)";
-    }, 150 * time);
+    }, 120 * time);
 
     return this.element;
   }
@@ -50,20 +50,19 @@ function randomTwoNumbers(max) {
   let v = [];
 
   for (let i = 0; i < max; i++) {
-
-    var r = Math.floor(Math.random() * (max /2));
-    var s = v.filter(n => n == r);
+    var r = Math.floor(Math.random() * (max / 2));
+    var s = v.filter((n) => n == r);
 
     if (s.length != 2) {
       v.push(r);
-      arr.push(r)
+      arr.push(r);
     } else {
       do {
         r = Math.floor(Math.random() * (max / 2));
-        s = v.filter(n => n == r);
+        s = v.filter((n) => n == r);
       } while (s.length == 2);
       v.push(r);
-      arr.push(r)
+      arr.push(r);
     }
   }
   return arr;
@@ -72,28 +71,109 @@ function randomTwoNumbers(max) {
 
 function run() {
   const gameBoard = document.querySelector(".game_board");
-  gameBoard.innerHTML = '';
+  gameBoard.innerHTML = "";
 
-  let matriz = [
+  var matriz = [
     [null, null, null, null],
     [null, null, null, null],
     [null, null, null, null],
     [null, null, null, null],
-  ]
+  ];
 
-  const numbersArray = randomTwoNumbers(16)
-  let x = 0;
-  let y = 0;
+  const numbersArray = randomTwoNumbers(16);
+  var x = 0;
+  var y = 0;
+  var actual = null;
 
   for (let i = 0; i < numbersArray.length; i++) {
-
     matriz[x][y] = numbersArray[i];
 
-    y = (y < 3) ? ++y : 0;
-    x = (y == 0) ? ++x : x;
+    let cube = new Cube();
+    cube.create("x");
+    let el = cube.render(i);
+    el.setAttribute('data-x', x);
+    el.setAttribute('data-y', y);
 
-    const cube = new Cube();
-    cube.create(numbersArray[i]);
-    cube.render(i);
+
+    function event(e) {
+      e.stopPropagation();
+      const x = e.target.getAttribute('data-x');
+      const y = e.target.getAttribute('data-y');
+      const subElement = e.target.querySelector('.value_cube');
+      if (!actual) {
+        setTimeout(() => {
+          subElement.textContent = matriz[parseInt(x)][parseInt(y)];
+        }, 100)
+        actual = subElement;
+      } else {
+        let firstClick = actual;
+
+        let elementClicked = e.target;
+        let x = elementClicked.getAttribute('data-x');
+        let y = elementClicked.getAttribute('data-y');
+        let value = matriz[parseInt(x)][parseInt(y)];
+
+        console.log(firstClick, value)
+
+        if (firstClick.textContent == String(value)) {
+
+          let el = firstClick.parentElement;
+
+          el.style = `
+            background: springgreen;
+            color: white;
+            transform: rotateZ(-360deg);
+            border: 1px solid black;
+          `;
+
+          elementClicked.style = `
+            background: springgreen;
+            color: white;
+            transform: rotateZ(-360deg);
+            border: 1px solid black;
+          `;
+          elementClicked.querySelector('.value_cube').textContent = value;
+
+          actual = null;
+
+        } else {
+
+          let el = firstClick.parentElement;
+
+          elementClicked.querySelector('.value_cube').textContent = value;
+          el.style = `
+            background: red;
+            color: white;
+            transform: rotateZ(-360deg);
+            border: 1px solid black;
+          `;
+
+          elementClicked.style = `
+            background: red;
+            color: white;
+            transform: rotateZ(-360deg);
+            border: 1px solid black;
+          `;
+          setTimeout(() => {
+            el.style = `
+              transform: rotateZ(-360deg);
+            `;
+            elementClicked.style = `
+              transform: rotateZ(-360deg);
+            `
+            firstClick.textContent = 'x'
+            elementClicked.querySelector('.value_cube').textContent = 'x'
+          }, 1000)
+          actual = null;
+        }
+      }
+    }
+
+    el.addEventListener("click", event);
+
+    y = y < 3 ? ++y : 0;
+    x = y == 0 ? ++x : x;
   }
+
+  console.log(matriz)
 }

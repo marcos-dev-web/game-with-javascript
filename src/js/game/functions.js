@@ -57,3 +57,44 @@ export function accept(firstClick, secondClick) {
     cursor: not-allowed;
   `;
 }
+
+export function animation(Actions, elements, matriz) {
+  let interval;
+  let i =  0;
+  let x = 0;
+  let y = 0;
+
+  const action = new Actions(matriz);
+  interval = setInterval(() => {
+    let el = elements[i];
+    el.style = 'pointer-events: none;'
+
+    action.mark(el, el.children[0], [x, y], '#c56cf0');
+    y = y < 3 ? ++y : 0;
+    x = y == 0 ? ++x : x;
+    if (i == 15) {
+      clearInterval(interval);
+    }
+    i++;
+  }, 200);
+}
+
+export function resetAnimation(Actions, elements, matriz) {
+  let interval;
+  let i =  0;
+  let x = 0;
+  let y = 0;
+
+  const action = new Actions(matriz);
+  interval = setInterval(() => {
+    let el = elements[i];
+
+    action.reset(el, el.children[0])
+    y = y < 3 ? ++y : 0;
+    x = y == 0 ? ++x : x;
+    if (i == 15) {
+      clearInterval(interval);
+    }
+    i++;
+  }, 200);
+}

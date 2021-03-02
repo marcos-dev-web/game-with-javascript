@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game</title>
-  <link rel="stylesheet" href="./src/css/reset.css">
-  <link rel="stylesheet" href="./src/css/main.css">
-</head>
-<body>
-  <header class="header">
-    <h1 class="logo">Found two equals</h1>
-  </header>
-  <main class="game">
-    <section class="game_board">
-    </section>
-  </main>
-  <script type="module" src="./src/js/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/main.css" />
+    <link rel="stylesheet" href="./src/css/home.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="logo">Home</h1>
+    </header>
+    <main class="body">
+      <section class="text">
+        <h1 class="title_game">F<span>o</span>und Tw<span>o</span> Equals</h1>
+        <p class="text_game">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio
+          perferendis voluptates tenetur expedita eum quo libero nihil, saepe
+          natus exercitationem cumque, perspiciatis rerum quam eos, non numquam
+          tempora quaerat enim.
+        </p>
+      </section>
+      <section class="init_game">
+        <p class="desc">o melhor passa-tempo para relaxar um pouco se divertindo.</p>
+        
+        <div class="img_container">
+          <span class="close">
+            <span></span>
+            <span></span>
+          </span>
+          <img src="./src/assets/img/game_photo.png" alt="foto do jogo" class="img_game">
+        </div>
+      
+        <h2 class="title">start the game here</h2>
+        <div class="buttons" onclick="window.location.replace('game.html');">
+          <button class="start">Start</button>
+        </div>
+      </section>
+    </main>
+    <script src="./src/js/page/main.js"></script>
+  </body>
 </html>

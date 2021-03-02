@@ -1,0 +1,165 @@
+.body {
+  padding: 70px 0;
+  display: flex;
+  flex-direction: column;
+  width: min(90vw, 900px);
+  margin: auto;
+}
+
+.text {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title_game {
+  font-size: 2.6rem;
+  padding-bottom: 1.4rem;
+}
+
+.title_game span {
+  color: springgreen;
+}
+
+.text_game {
+  font-size: 1.1rem;
+  width: 90%;
+  text-align: justify;
+  line-height: 1.7rem;
+  text-indent: 1rem;
+  color: rgb(102, 96, 104);
+}
+
+.init_game {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 2rem;
+  text-transform: lowercase;
+}
+
+.title::first-letter {
+  text-transform: uppercase;
+  color: springgreen;
+}
+
+.desc::before {
+  content: "[-]";
+  color: var(--grey-dark);
+  padding: 0.3rem;
+  padding-top: 0.1rem;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 3px;
+  font-weight: bold;
+  background: var(--soft-white);
+}
+
+.desc {
+  font-size: 1.2rem;
+  padding-bottom: 2rem;
+}
+
+.img_game {
+  width: 100%;
+  cursor: pointer;
+  transition: 100ms;
+  max-width: 700px;
+}
+
+.start {
+  width: 12rem;
+  font-size: 2.7em;
+  padding: 1rem 0.5rem;
+  color: white;
+  font-weight: bold;
+  background: var(--grey-dark);
+  border-radius: 2rem;
+  letter-spacing: 2px;
+  margin-top: 30px;
+  transition: 150ms;
+  cursor: pointer;
+}
+
+.start:hover {
+  background: springgreen;
+  color: white;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+}
+
+.close span {
+  display: block;
+  width: 30px;
+  height: 5px;
+  border-radius: 3px;
+  background: white;
+  cursor: pointer;
+}
+
+.close span:nth-child(1) {
+  transform: rotateZ(45deg) translateX(12%);
+}
+
+.close span:nth-child(2) {
+  transform: rotateZ(-45deg) translateX(12%);
+}
+
+.show_button_close {
+  display: block;
+  right: 2rem;
+  top: 2rem;
+}
+
+.show_container_image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 699;
+}
+
+.show_image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 700;
+}
+
+@media screen and (max-width: 680px) {
+  .body {
+    align-items: center;
+  }
+  .text {
+    align-items: center;
+  }
+  .init_game {
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .desc::before {
+    display: none;
+  }
+
+  .title,
+  .desc,
+  .title_game {
+    text-align: center;
+  }
+  
+}

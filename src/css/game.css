@@ -59,3 +59,54 @@
   color: inherit;
   pointer-events: none;
 }
+
+#status_game {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1000;
+  background: rgba(0,0,0,.2);
+  display: none;
+  place-items: center;
+}
+
+.box_status {
+  width: min(70vw, 90%);
+  height: min(60vw, 90%);
+  background: white;
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  position: relative;
+}
+
+#msg {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.link {
+  padding: 10px 15px;
+  border-radius: 3px;
+  margin: 0 20px;
+  background-color: #7d5fff;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.link:hover {
+  background-color: #4d5fff;
+}
+
+@media screen and (max-width: 500px) {
+  .box_status {
+    width: 90vw;
+    height: 90vh;
+  }
+}

@@ -1,4 +1,4 @@
-.timer {
+.timer.r {
   width: 90vw;
   border-radius: 4px;
   position: fixed;
@@ -17,8 +17,14 @@
 
 #number_time {
   display: inline-block;
-  width: 20px;
+  width: fit-content;
+  width: -moz-fit-content;
   text-align: center;
+  color: inherit;
+}
+#type_time {
+  color: inherit;
+  padding-left: 4px;
 }
 
 .barTime {

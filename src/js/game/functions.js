@@ -1,3 +1,5 @@
+import { counter } from './counter.js';
+
 export function randomTwoNumbers(max) {
   let arr = [];
   let v = [];
@@ -94,6 +96,8 @@ export function resetAnimation(Actions, elements, matriz) {
     x = y == 0 ? ++x : x;
     if (i == 15) {
       clearInterval(interval);
+      counter();
+      localStorage.setItem('finished_game', false);
     }
     i++;
   }, 200);

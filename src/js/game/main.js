@@ -1,12 +1,16 @@
 import Cube from './Cube.js';
 import { randomTwoNumbers, animation, resetAnimation } from './functions.js';
 import { event } from './listener.js';
+import { responsive } from '../utils/responsive.js';
+import { stopGameOver } from './counter.js';
 import Actions from './Actions.js';
 
 
 window.onload = () => {
   setTimeout(() => {
+
     run();
+    responsive(window)
   }, 500);
 };
 
@@ -41,8 +45,8 @@ function run() {
       event(e, matriz, () => {
         if (++countCorrect == 8) {
           setTimeout(() => {
-            alert('voce ganhou');
-            window.location.reload();
+            stopGameOver("winner winner")
+            localStorage.setItem('finished_game', true)
           }, 1500)
         }
       })
@@ -61,5 +65,4 @@ function run() {
       clearTimeout(timer);
     }, 200 * 16);
   }, 1000)
-
 }

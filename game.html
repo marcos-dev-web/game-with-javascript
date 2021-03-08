@@ -10,13 +10,26 @@
   <link rel="stylesheet" href="./src/css/progress.css">
 </head>
 <body>
+  <section id="status_game">
+    <div class="box_status">
+      <div id="message">
+        <p id="msg">your lose the game</p>
+      </div>
+      <div id="buttons">
+        <a href="/game.html" class="link">restart</a>
+        <a href="/index.html" class="link">home</a>
+      </div>
+    </div>
+  </section>
   <header class="header">
     <h1 class="logo">Found two equals</h1>
   </header>
   <section class="timer">
+    <div class="timer r">
     <p class="time"><span id="number_time">1</span><span id="type_time">min</span></p>
     <div class="barTime">
-      <span class="progress" style="width: 100%"></span>
+      <span class="progress" style="width: 100%" id="progress_bar"></span>
+    </div>
     </div>
   </section>
   <main class="game">
@@ -24,5 +37,6 @@
     </section>
   </main>
   <script type="module" src="./src/js/game/main.js"></script>
+  <script type="module" src="./src/js/utils/responsive.js"></script>
 </body>
 </html>
